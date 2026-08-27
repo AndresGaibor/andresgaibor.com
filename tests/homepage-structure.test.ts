@@ -28,4 +28,14 @@ describe('homepage structure', () => {
     expect(section).toContain('variant="secondary"');
     expect(section).toContain('const [primary, ...secondary]');
   });
+
+  test('homepage includes evidence and experience before the blog', async () => {
+    const page = await read('src/pages/index.astro');
+    const evidence = page.indexOf('<ImpactEvidence />');
+    const experience = page.indexOf('<ExperienceOverview />');
+    const blog = page.indexOf('<LatestPosts />');
+    expect(evidence).toBeGreaterThan(-1);
+    expect(experience).toBeGreaterThan(evidence);
+    expect(blog).toBeGreaterThan(experience);
+  });
 });

@@ -1,0 +1,26 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { impactEvidence } from '../../data/impact';
+---
+
+<section class="border-y border-[var(--line)] py-20 sm:py-24">
+  <Container>
+    <SectionHeading
+      eyebrow="Evidencia"
+      title="No solo tecnologías. Sistemas que puedo construir y explicar."
+      description="Prefiero demostrar rango de ingeniería con decisiones y sistemas reales antes que con porcentajes o métricas inventadas."
+    />
+    <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
+      {
+        impactEvidence.map((item, index) => (
+          <article class="bg-[var(--surface)] p-6 sm:p-8">
+            <p class="text-xs font-semibold tabular-nums text-[var(--muted)]">0{index + 1}</p>
+            <h3 class="mt-5 text-xl font-semibold tracking-tight">{item.title}</h3>
+            <p class="mt-3 max-w-xl leading-7 text-[var(--muted)]">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Container>
+</section>
