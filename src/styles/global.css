@@ -1,1 +1,113 @@
 @import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+  --page: #fafafa;
+  --surface: #ffffff;
+  --surface-soft: #f4f4f5;
+  --text: #18181b;
+  --muted: #71717a;
+  --line: #e4e4e7;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #09090b;
+    --surface: #111113;
+    --surface-soft: #18181b;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --line: #27272a;
+    --accent: #60a5fa;
+    --accent-soft: #172554;
+  }
+}
+
+html {
+  background: var(--page);
+  color: var(--text);
+  scroll-behavior: smooth;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34rem),
+    var(--page);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+.prose-site {
+  color: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.prose-site h2,
+.prose-site h3 {
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.prose-site h2 { font-size: 1.75rem; }
+.prose-site h3 { font-size: 1.3rem; }
+.prose-site p,
+.prose-site ul,
+.prose-site ol { color: var(--muted); }
+.prose-site strong { color: var(--text); }
+.prose-site a { color: var(--accent); }
+.prose-site code {
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--surface-soft);
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+.prose-site pre {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+  padding: 1rem;
+}
+.prose-site pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+  main { padding: 0 !important; }
+}
