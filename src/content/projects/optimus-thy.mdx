@@ -1,0 +1,48 @@
+---
+title: "Optimus THY"
+description: "Proyecto de tesis para gestionar información clínica e integrar flujos de análisis asistidos por inteligencia artificial con foco en privacidad y trazabilidad."
+year: 2026
+categories:
+  - Product Engineering
+  - AI-assisted Systems
+technologies:
+  - React
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - RustFS
+featured: true
+status: prototype
+order: 1
+---
+
+## El problema
+
+La información clínica, estudios, imágenes y resultados de apoyo pueden terminar dispersos entre procesos y formatos distintos. Optimus THY explora cómo centralizar ese flujo en una aplicación web con control de acceso y trazabilidad.
+
+## Mi alcance
+
+Mi tesis se concentra en el componente de software: la gestión de pacientes e información clínica, asociación de estudios e imágenes, consumo del modelo de IA y presentación de resultados para revisión profesional.
+
+No desarrollo el modelo clínico como producto diagnóstico ni presento la aplicación como un sistema validado para uso asistencial.
+
+## Arquitectura
+
+El frontend se construye con React. La arquitectura de backend está orientada a Python/FastAPI, PostgreSQL y almacenamiento de archivos clínicos, separando datos estructurados de documentos e imágenes.
+
+El diseño contempla procesamiento local para flujos sensibles y una integración de inferencia en la que los resultados del modelo se almacenan y muestran como apoyo al análisis humano.
+
+## Privacidad y trazabilidad
+
+- Roles diferenciados para personal autorizado.
+- Separación entre información clínica y archivos.
+- Registro de acciones relevantes y resultados procesados.
+- Arquitectura preparada para reducir exposición innecesaria de datos sensibles.
+
+## Estado actual
+
+Es un proyecto de tesis en desarrollo. El frontend y el diseño del producto están más avanzados que la integración completa del backend y del flujo de IA.
+
+## Qué demuestra
+
+Diseño de producto full stack, modelado de datos, integración de IA dentro de un flujo real, manejo de archivos sensibles y decisiones de arquitectura donde privacidad y trazabilidad forman parte del problema desde el inicio.

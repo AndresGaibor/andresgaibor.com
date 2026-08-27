@@ -7,7 +7,7 @@ export const capabilities = [
   {
     title: 'Data Engineering',
     description: 'Pipelines, SQL, procesamiento y exportación de datos con foco en rendimiento y costo.',
-    items: ['BigQuery', 'SQL', 'ETL / ELT', 'Qlik', 'Data pipelines', 'BI'],
+    items: ['BigQuery', 'SQL', 'ETL / ELT', 'Data modeling', 'Data pipelines', 'BI'],
   },
   {
     title: 'Automation',
