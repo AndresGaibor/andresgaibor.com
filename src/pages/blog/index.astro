@@ -4,13 +4,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/ui/Container.astro';
 import SectionHeading from '../../components/ui/SectionHeading.astro';
 import PostCard from '../../components/blog/PostCard.astro';
+import PostPlaceholder from '../../components/blog/PostPlaceholder.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const placeholders = [
+  { title: 'Exportaciones masivas de BigQuery', description: 'Cómo automatizar y escalar exportaciones desde BigQuery a Cloud Storage.', cover: 'pipeline' as const },
+  { title: 'Privacidad por diseño en productos de datos', description: 'Arquitectura y decisiones técnicas para minimizar exposición de datos sensibles.', cover: 'privacy' as const },
+  { title: 'Developer tooling para automatización remota', description: 'Cómo construir herramientas que agentes y desarrolladores pueden usar de forma controlada.', cover: 'remote' as const },
+];
 ---
 
 <BaseLayout title="Blog" description="Artículos técnicos de Andrés Gaibor sobre software, data engineering, automatización e infraestructura.">
   <Container class="py-20 sm:py-28">
     <SectionHeading eyebrow="Blog" title="Notas de ingeniería desde problemas reales." description="Arquitectura, datos, automatización y herramientas explicadas desde la práctica." />
     <div class="mt-12 grid gap-5">{posts.map((post) => <PostCard post={post} />)}</div>
+
+    {placeholders.length > 0 && (
+      <div class="mt-16">
+        <div class="border-t border-[var(--line)] pt-12">
+          <h2 class="text-lg font-semibold text-[var(--muted)]">En preparación</h2>
+          <p class="mt-2 text-sm text-[var(--muted)] opacity-70">Temas en desarrollo que pronto tendrán su artículo.</p>
+        </div>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {placeholders.map((placeholder) => (
+            <PostPlaceholder
+              title={placeholder.title}
+              description={placeholder.description}
+              cover={placeholder.cover}
+            />
+          ))}
+        </div>
+      </div>
+    )}
   </Container>
 </BaseLayout>

@@ -108,9 +108,18 @@ a {
 @media print {
   header,
   footer,
+  nav,
   .no-print { display: none !important; }
-  body { background: white; color: black; }
+  body {
+    background: white !important;
+    color: black !important;
+    background-image: none !important;
+  }
   main { padding: 0 !important; }
   a { color: inherit; text-decoration: none; }
+  article {
+    border: none !important;
+    background: white !important;
+  }
   .cv-page { max-width: none; padding: 0; }
 }
