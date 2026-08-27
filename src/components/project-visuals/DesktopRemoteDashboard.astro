@@ -14,21 +14,21 @@ import DemoBadge from '../ui/DemoBadge.astro';
     </div>
   </div>
 
-  <div class="grid grid-cols-[140px_1fr]">
-    <aside class="border-r border-[var(--line)] bg-[var(--surface-soft)] p-3">
-      <nav class="space-y-1">
-        <a href="#" class="flex items-center gap-2 rounded-lg bg-[var(--accent-soft)] px-2 py-1.5 text-[var(--accent)]">
+  <div class="grid grid-cols-1 md:grid-cols-[140px_1fr]">
+    <aside class="hidden md:block border-r border-[var(--line)] bg-[var(--surface-soft)] p-3">
+      <nav aria-label="Navegación del dashboard" class="space-y-1">
+        <button type="button" class="flex w-full items-center gap-2 rounded-lg bg-[var(--accent-soft)] px-2 py-1.5 text-[var(--accent)]">
           <span>📁</span> Files
-        </a>
-        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+        </button>
+        <button type="button" class="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
           <span>⚡</span> Processes
-        </a>
-        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+        </button>
+        <button type="button" class="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
           <span>⌨</span> Shell
-        </a>
-        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+        </button>
+        <button type="button" class="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
           <span>📋</span> Logs
-        </a>
+        </button>
       </nav>
     </aside>
 
