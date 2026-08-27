@@ -51,7 +51,7 @@ const structuredData = {
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <title>{fullTitle}</title>
   </head>
   <body>

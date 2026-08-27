@@ -1,0 +1,47 @@
+---
+import Container from '../ui/Container.astro';
+import { profile } from '../../data/profile';
+import { social } from '../../data/social';
+---
+
+<section class="relative overflow-hidden py-20 sm:py-28 lg:py-36">
+  <Container>
+    <div class="max-w-4xl">
+      <p class="mb-5 flex flex-wrap items-center gap-2 text-sm font-medium text-[var(--muted)]">
+        <span class="rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5">{profile.location}</span>
+        <span class="rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5">Software · Datos · Automatización</span>
+      </p>
+
+      <h1 class="max-w-4xl text-5xl font-semibold tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+        {profile.headline}
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+        {profile.summary}
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/proyectos" class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5">
+          Ver proyectos
+        </a>
+        <a href={`mailto:${social.email}`} class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]">
+          Contactarme
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] sm:grid-cols-3">
+      <div class="bg-[var(--surface)] p-6">
+        <p class="text-sm text-[var(--muted)]">Enfoque</p>
+        <p class="mt-2 font-semibold">Resolver problemas reales</p>
+      </div>
+      <div class="bg-[var(--surface)] p-6">
+        <p class="text-sm text-[var(--muted)]">Perfil</p>
+        <p class="mt-2 font-semibold">Full Stack + Data</p>
+      </div>
+      <div class="bg-[var(--surface)] p-6">
+        <p class="text-sm text-[var(--muted)]">Disponible para</p>
+        <p class="mt-2 font-semibold">Remoto y proyectos</p>
+      </div>
+    </div>
+  </Container>
+</section>

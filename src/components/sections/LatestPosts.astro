@@ -1,0 +1,18 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="border-y border-[var(--line)] py-20 sm:py-24">
+  <Container>
+    <SectionHeading
+      eyebrow="Blog"
+      title="Escribo sobre problemas que realmente he tenido que resolver."
+      description="El blog quedará conectado a Content Collections para publicar desde Markdown o MDX sin depender de un CMS."
+    />
+    <div class="mt-10 rounded-2xl border border-dashed border-[var(--line)] bg-[var(--surface)] p-7 text-[var(--muted)]">
+      <p>La colección de artículos se habilita en el siguiente paso del proyecto.</p>
+      <a href="/blog" class="mt-4 inline-block font-semibold text-[var(--accent)]">Ir al blog →</a>
+    </div>
+  </Container>
+</section>
