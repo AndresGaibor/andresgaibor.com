@@ -3,6 +3,9 @@ import { describe, expect, test } from 'bun:test';
 import { readdir, readFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import { profile } from '../src/data/profile';
+import { coreTechnologies } from '../src/data/skills';
+import { experience } from '../src/data/experience';
+import { impactEvidence } from '../src/data/impact';
 
 const TEXT_EXTENSIONS = new Set(['.astro', '.ts', '.md', '.mdx', '.css', '.json', '.svg', '.xml']);
 
@@ -45,5 +48,26 @@ describe('public portfolio policy', () => {
     expect(profile.headline).toBe(
       'Construyo productos, automatizaciones y sistemas de datos de extremo a extremo.',
     );
+  });
+
+  test('keeps the public technology list selective', () => {
+    expect(coreTechnologies).toEqual([
+      'TypeScript',
+      'React',
+      'Python',
+      'FastAPI',
+      'Bun',
+      'PostgreSQL',
+      'SQL',
+      'Cloudflare',
+      'Docker',
+    ]);
+  });
+
+  test('uses defensible evidence without confidential wording', () => {
+    const text = JSON.stringify({ experience, impactEvidence }).toLowerCase();
+    expect(text).not.toContain('reporting');
+    expect(text).not.toContain('qlik');
+    expect(impactEvidence).toHaveLength(4);
   });
 });

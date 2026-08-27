@@ -1,20 +1,20 @@
 export const experience = [
   {
     period: '2026 — Actualidad',
-    title: 'Ingeniería de software y datos',
+    title: 'Software Engineering & Data Engineering',
     description:
-      'Construcción de herramientas para automatización, reporting, integración de sistemas y procesamiento de datos a escala.',
+      'Diseño y construcción de productos, automatizaciones, integraciones y sistemas de datos, desde la interfaz hasta el despliegue.',
   },
   {
-    period: 'Proyectos',
-    title: 'Full Stack & Product Engineering',
+    period: 'Product Engineering',
+    title: 'Full Stack de extremo a extremo',
     description:
-      'Desarrollo de productos web completos, desde arquitectura y experiencia de usuario hasta APIs, persistencia, despliegue y observabilidad.',
+      'Arquitectura de frontend y backend, APIs, persistencia, seguridad, experiencia de usuario y evolución del producto como un sistema completo.',
   },
   {
-    period: 'Investigación aplicada',
-    title: 'Automatización e infraestructura',
+    period: 'Automation & Tooling',
+    title: 'Infraestructura para reducir trabajo manual',
     description:
-      'Experimentación práctica con developer tooling, agentes de IA, redes, contenedores y automatización de flujos técnicos.',
+      'Automatización de flujos técnicos, developer tooling, integraciones, contenedores y ejecución remota controlada.',
   },
 ] as const;
