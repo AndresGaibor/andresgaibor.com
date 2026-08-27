@@ -13,7 +13,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "verify": "bun run check && bun run build",
-    "astro": "astro"
+    "astro": "astro",
+    "cf:dev": "bun run build && wrangler dev",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.8",
@@ -32,6 +34,7 @@
     "esbuild": true
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10"
+    "@astrojs/check": "^0.9.10",
+    "wrangler": "^4.126.0"
   }
 }

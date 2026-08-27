@@ -1,43 +1,110 @@
-# Astro Starter Kit: Minimal
+# andresgaibor.com
 
-```sh
-bun create astro@latest -- --template minimal
+Sitio profesional de Andrés Gaibor: portfolio, casos de estudio, blog técnico, CV web y base para futuras herramientas interactivas.
+
+## Stack
+
+- Astro 7
+- TypeScript strict
+- Tailwind CSS 4 mediante `@tailwindcss/vite`
+- React 19 disponible solo para islands
+- MDX + Astro Content Collections
+- Bun
+- Cloudflare Workers Static Assets para despliegue
+
+## Desarrollo
+
+```bash
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Astro sirve por defecto en `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Calidad
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+bun run check
+bun run build
+```
+
+O ambos:
+
+```bash
+bun run verify
+```
+
+No se considera completo un cambio si `bun run verify` falla.
+
+## Contenido
+
+### Proyectos
+
+Los casos de estudio viven en:
+
+```text
+src/content/projects/*.mdx
+```
+
+Cada archivo debe cumplir el schema definido en `src/content.config.ts`.
+
+### Blog
+
+Los artículos viven en:
+
+```text
+src/content/blog/*.mdx
+```
+
+Usa `draft: true` para mantener un artículo fuera de las rutas públicas y del RSS.
+
+## Datos reutilizables
+
+La información de perfil, experiencia, tecnologías y enlaces se edita en:
+
+```text
+src/data/
+```
+
+Evita repetir la misma información directamente en varias páginas.
+
+## React
+
+Astro es la opción por defecto. React solo se usa para interacción real en cliente. No conviertas páginas o secciones estáticas en componentes React.
+
+## Rutas principales
 
 ```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+/proyectos
+/blog
+/sobre-mi
+/experiencia
+/cv
+/contacto
+/ahora
+/lab
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Cloudflare
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+El sitio se genera de forma estática en `dist/`. `wrangler.jsonc` está preparado para Workers Static Assets.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Previsualización con Wrangler:
 
-## 🧞 Commands
+```bash
+bun run cf:dev
+```
 
-All commands are run from the root of the project, from a terminal:
+Despliegue manual futuro:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+```bash
+bun run deploy
+```
 
-## 👀 Want to learn more?
+**No ejecutes deploy ni cambies DNS como parte de tareas de desarrollo ordinarias.** La publicación del dominio se hace como una operación explícita aparte.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Documentación de arquitectura
+
+- Diseño: `docs/superpowers/specs/2026-08-26-andresgaibor-site-design.md`
+- Plan inicial: `docs/superpowers/plans/2026-08-26-andresgaibor-site.md`
