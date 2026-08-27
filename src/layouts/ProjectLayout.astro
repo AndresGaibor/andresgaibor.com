@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <Container class="py-16 sm:py-24">
+    <a href="/proyectos" class="text-sm font-semibold text-[var(--accent)]">← Proyectos</a>
+    <header class="mt-10 max-w-4xl">
+      <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+        <span>{project.data.year}</span><span>·</span><span>{project.data.categories.join(' · ')}</span>
+      </div>
+      <h1 class="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">{project.data.title}</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-[var(--muted)]">{project.data.description}</p>
+      <ul class="mt-7 flex flex-wrap gap-2">{project.data.technologies.map((item) => <li class="rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5 text-xs font-medium">{item}</li>)}</ul>
+    </header>
+    <article class="prose-site mt-14 max-w-3xl"><slot /></article>
+  </Container>
+</BaseLayout>

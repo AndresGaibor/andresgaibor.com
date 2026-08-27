@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+
+<BaseLayout title="Blog" description="Artículos técnicos de Andrés Gaibor sobre software, data engineering, automatización e infraestructura.">
+  <Container class="py-20 sm:py-28">
+    <SectionHeading eyebrow="Blog" title="Notas de ingeniería desde problemas reales." description="Arquitectura, datos, automatización y herramientas explicadas desde la práctica." />
+    <div class="mt-12 grid gap-5">{posts.map((post) => <PostCard post={post} />)}</div>
+  </Container>
+</BaseLayout>

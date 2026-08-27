@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const date = new Intl.DateTimeFormat('es-EC', { dateStyle: 'long', timeZone: 'UTC' }).format(post.data.publishedAt);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <Container class="py-16 sm:py-24">
+    <a href="/blog" class="text-sm font-semibold text-[var(--accent)]">← Blog</a>
+    <header class="mt-10 max-w-4xl">
+      <div class="flex flex-wrap gap-2 text-xs font-medium text-[var(--muted)]"><time datetime={post.data.publishedAt.toISOString()}>{date}</time><span>·</span><span>{post.data.tags.join(' · ')}</span></div>
+      <h1 class="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">{post.data.title}</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-[var(--muted)]">{post.data.description}</p>
+    </header>
+    <article class="prose-site mt-14 max-w-3xl"><slot /></article>
+  </Container>
+</BaseLayout>

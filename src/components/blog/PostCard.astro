@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const date = new Intl.DateTimeFormat('es-EC', { dateStyle: 'medium', timeZone: 'UTC' }).format(post.data.publishedAt);
+---
+
+<a href={`/blog/${post.id}`} class="group block rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 no-underline transition-transform hover:-translate-y-1 sm:p-7">
+  <div class="flex flex-wrap gap-2 text-xs font-medium text-[var(--muted)]"><time datetime={post.data.publishedAt.toISOString()}>{date}</time><span>·</span><span>{post.data.tags.join(' · ')}</span></div>
+  <h2 class="mt-4 text-2xl font-semibold tracking-[-0.03em]">{post.data.title}</h2>
+  <p class="mt-3 leading-7 text-[var(--muted)]">{post.data.description}</p>
+  <p class="mt-6 text-sm font-semibold text-[var(--accent)]">Leer artículo →</p>
+</a>

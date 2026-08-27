@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import ProjectCard from '../../components/projects/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Proyectos" description="Casos de estudio de software, datos, automatización y developer tooling construidos por Andrés Gaibor.">
+  <Container class="py-20 sm:py-28">
+    <SectionHeading eyebrow="Proyectos" title="No solo qué construí, sino por qué lo construí así." description="Cada caso de estudio explica el problema, la arquitectura, decisiones técnicas y lo que aprendí." />
+    <div class="mt-12 grid gap-5 lg:grid-cols-2">{projects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}</div>
+  </Container>
+</BaseLayout>

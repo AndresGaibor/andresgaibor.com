@@ -1,0 +1,37 @@
+---
+title: "Por qué elegí Astro para mi portafolio técnico"
+description: "Cómo combinar Astro y React para tener un sitio de contenido rápido sin renunciar a interfaces interactivas."
+publishedAt: 2026-08-26
+tags:
+  - Astro
+  - React
+  - Architecture
+featured: true
+draft: false
+---
+
+Un portafolio profesional se parece más a una publicación que a una aplicación SaaS: la mayoría de las visitas consisten en **leer**, navegar entre proyectos y abrir artículos.
+
+Por eso elegí **Astro como framework principal** y no una SPA React tradicional.
+
+## HTML primero
+
+Astro puede generar la mayor parte del sitio como HTML estático. La landing, el CV, los casos de estudio y el blog no necesitan hidratar una aplicación completa para funcionar.
+
+Eso reduce JavaScript cliente, simplifica el despliegue y ayuda a que el contenido llegue rápido al navegador.
+
+## React sigue teniendo un lugar
+
+No eliminé React del stack. Lo reservé para partes que realmente necesitan estado en el cliente: filtros, buscadores, calculadoras o las futuras herramientas de `/lab`.
+
+La regla es sencilla: **Astro para páginas; React para interacción**.
+
+## Contenido como archivos
+
+Los proyectos y artículos viven en MDX y se validan con Content Collections. Esto mantiene el contenido versionado junto al código y evita introducir un CMS antes de necesitarlo.
+
+## Diseñar para crecer sin construir de más
+
+Una futura plataforma de cursos puede convertirse en una aplicación separada si termina necesitando autenticación, pagos, progreso y dashboards. No hace falta cargar esa complejidad hoy.
+
+La arquitectura inicial intenta optimizar una sola cosa: publicar un sitio profesional rápido, mantenible y fácil de extender.
