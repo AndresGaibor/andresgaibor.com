@@ -9,15 +9,26 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  socialImage?: string;
+  socialImageAlt?: string;
 }
 
 const {
   title = `${profile.name} — Software Engineer`,
   description = profile.summary,
   noindex = false,
+  socialImage = '/og-image.jpg',
+  socialImageAlt = `${profile.name} — Software Engineer · Full Stack · Data Engineering`,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? profile.site);
+const siteUrl = Astro.site ?? new URL(profile.site);
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const socialImageUrl = new URL(socialImage, siteUrl);
+const socialImageType = socialImageUrl.pathname.endsWith('.png')
+  ? 'image/png'
+  : socialImageUrl.pathname.endsWith('.webp')
+    ? 'image/webp'
+    : 'image/jpeg';
 const fullTitle = title.includes(profile.name) ? title : `${title} — ${profile.name}`;
 const structuredData = {
   '@context': 'https://schema.org',
@@ -46,9 +57,17 @@ const structuredData = {
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content={socialImageType} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <title>{fullTitle}</title>
