@@ -1,5 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import OptimusDashboard from '../project-visuals/OptimusDashboard.astro';
+import SemillasDashboard from '../project-visuals/SemillasDashboard.astro';
+import DesktopRemoteDashboard from '../project-visuals/DesktopRemoteDashboard.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -42,16 +45,31 @@ const primary = variant === 'primary';
 
     {
       primary && (
-        <div class="mt-9 min-h-48 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-soft)] p-6 lg:mt-0">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">Proyecto principal</p>
-          <div class="mt-12 border-t border-[var(--line)] pt-5">
-            <p class="text-4xl font-semibold tracking-[-0.06em]">01</p>
-            <p class="mt-3 max-w-xs text-sm leading-6 text-[var(--muted)]">
-              Producto, datos, IA asistida, privacidad y trazabilidad dentro de una sola arquitectura.
-            </p>
-          </div>
+        <div class="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] lg:mt-0">
+          {project.id === 'optimus-thy' ? (
+            <OptimusDashboard />
+          ) : (
+            <div class="min-h-48 bg-[var(--surface-soft)] p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">Proyecto principal</p>
+              <div class="mt-12 border-t border-[var(--line)] pt-5">
+                <p class="text-4xl font-semibold tracking-[-0.06em]">01</p>
+                <p class="mt-3 max-w-xs text-sm leading-6 text-[var(--muted)]">
+                  Producto, datos, IA asistida, privacidad y trazabilidad dentro de una sola arquitectura.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )
     }
   </div>
+
+  {
+    !primary && (
+      <div class="mt-6 overflow-hidden rounded-2xl border border-[var(--line)]">
+        {project.id === 'semillas' && <SemillasDashboard />}
+        {project.id === 'desktop-remote' && <DesktopRemoteDashboard />}
+      </div>
+    )
+  }
 </a>
