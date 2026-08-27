@@ -16,20 +16,71 @@ status: active
 order: 3
 ---
 
+import DesktopRemoteDashboard from '../../components/project-visuals/DesktopRemoteDashboard.astro';
+import ProjectArchitecture from '../../components/projects/ProjectArchitecture.astro';
+import ProjectFeatureList from '../../components/projects/ProjectFeatureList.astro';
+import ProjectStatus from '../../components/projects/ProjectStatus.astro';
+import DemoBadge from '../../components/ui/DemoBadge.astro';
+
+<DesktopRemoteDashboard />
+
 ## La idea
 
 Los agentes de IA son mucho más útiles cuando pueden interactuar con un entorno real, pero dar acceso directo a una máquina completa crea problemas de seguridad, observabilidad y portabilidad.
 
 Desktop Remote expone capacidades concretas —archivos, procesos, búsqueda y configuración— como herramientas explícitas. La máquina conserva el control de lo que puede ejecutarse y cada operación tiene una superficie limitada.
 
-## Principios
+## Arquitectura MCP
 
-- Acceso autorizado y explícito.
-- Herramientas pequeñas con contratos claros.
-- Preferencia por inspección antes de cambios.
-- Redacción de secretos y cuidado con argumentos de procesos.
-- Compatibilidad pensada para más de un sistema operativo.
+<ProjectArchitecture
+  nodes={[
+    { label: 'Agente IA', detail: 'Claude / GPT / cualquier cliente MCP' },
+    { label: 'Desktop Remote', detail: 'MCP Server — Bun' },
+    { label: 'Sistema', detail: 'Archivos, Procesos, Shell, Logs' },
+    { label: 'Red', detail: 'Tailscale — túnel seguro' },
+  ]}
+/>
+
+## Principios de diseño
+
+<ProjectFeatureList items={[
+  { title: 'Acceso autorizado', description: 'Sesiones explícitas. Sin acceso anónimo.' },
+  { title: 'Contratos claros', description: 'Cada herramienta tiene entrada/salida definida.' },
+  { title: 'Revisión antes de acción', description: 'Inspección de archivos y procesos antes de modificarlos.' },
+  { title: 'Secretos protegidos', description: 'Nunca se pasan como argumentos directos. Redacción en logs.' },
+  { title: 'Multi-plataforma', description: 'Diseñado para funcionar en macOS y Linux.' },
+]}
+/>
+
+## Flujo de ejecución
+
+Descripción del flujo: el agente solicita una herramienta MCP → Desktop Remote valida la sesión → ejecuta la operación local → devuelve resultado → registra en audit log.
+
+Todo es explícito y auditable.
+
+## Estado actual
+
+<ProjectStatus
+  implemented={[
+    'Core MCP server — archivos y procesos',
+    'Sesiones con identificación clara',
+    'Redacción de secretos en logs',
+    'Integración Tailscale para túneles seguros',
+    'Terminal interactiva vía MCP',
+  ]}
+  inProgress={[
+    'Ampliación de herramientas MCP disponibles',
+    'Sistema de permisos por sesión',
+    'UI de administración de sesiones',
+  ]}
+/>
 
 ## Qué demuestra
 
 Trabajo con protocolos de agentes, tooling, procesos locales, seguridad práctica, túneles y diseño de interfaces para automatización remota.
+
+## Aprendizajes
+
+- Diseñar herramientas con contratos pequeños y precisos es más difícil que APIs grandes, pero evita errores en los agentes.
+- La redacción de secretos en logs es imprescindible cuando los argumentos de los procesos se exponen al agente.
+- Tailscale simplifica enormemente el problema de túneles seguros sin configurar infraestructura adicional.

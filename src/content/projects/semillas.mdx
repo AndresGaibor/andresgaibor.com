@@ -16,21 +16,63 @@ status: active
 order: 2
 ---
 
+import SemillasDashboard from '../../components/project-visuals/SemillasDashboard.astro';
+import ProjectArchitecture from '../../components/projects/ProjectArchitecture.astro';
+import ProjectFeatureList from '../../components/projects/ProjectFeatureList.astro';
+import ProjectStatus from '../../components/projects/ProjectStatus.astro';
+import DemoBadge from '../../components/ui/DemoBadge.astro';
+
+<SemillasDashboard />
+
 ## Producto antes que demo
 
 Semillas está planteado como una plataforma educativa completa, no como un conjunto aislado de pantallas. Incluye contenido, actividades interactivas, progreso, perfiles y herramientas administrativas.
 
 ## Arquitectura
 
-La interfaz usa React y TypeScript. El backend expone APIs con Hono, la persistencia se apoya en PostgreSQL y el despliegue está pensado para infraestructura ligera en Cloudflare.
+<ProjectArchitecture
+  nodes={[
+    { label: 'Frontend', detail: 'React + TypeScript' },
+    { label: 'Backend', detail: 'Hono API' },
+    { label: 'Base de datos', detail: 'PostgreSQL' },
+    { label: 'CDN / Deploy', detail: 'Cloudflare Workers' },
+  ]}
+/>
 
-## Qué me interesaba resolver
+## Módulos principales
 
-- Modelar distintos tipos de actividades sin duplicar lógica.
-- Mantener una experiencia rápida en dispositivos modestos.
-- Separar claramente la experiencia de estudiantes y administración.
-- Tratar contenido, progreso y medios como dominios independientes.
+<ProjectFeatureList items={[
+  { title: 'Contenido', description: 'Lecciones y material organizados por materia y nivel.' },
+  { title: 'Actividades', description: 'Interactivas con retroalimentación inmediata.' },
+  { title: 'Progreso', description: 'Seguimiento por estudiante, actividad y materia.' },
+  { title: 'Administración', description: 'Gestión de contenido, usuarios y configuración.' },
+  { title: 'PWA', description: 'Funciona offline con sync cuando hay conexión.' },
+]}
+/>
+
+## Estado actual
+
+<ProjectStatus
+  implemented={[
+    'Plataforma completa — frontend y backend',
+    'Sistema de actividades interactivas',
+    'Modelo de progreso por estudiante',
+    'Panel de administración de contenido',
+    'PWA — funcionamiento offline parcial',
+  ]}
+  inProgress={[
+    'Sincronización offline completa',
+    'Ampliación de tipos de actividades',
+    'Mejora de rendimiento en dispositivos modestos',
+  ]}
+/>
 
 ## Qué demuestra
 
 Capacidad para pensar un producto de extremo a extremo: UX, frontend, backend, datos, seguridad, PWA y evolución del modelo de contenido.
+
+## Aprendizajes
+
+- Modelar actividades sin duplicar lógica fue el mayor desafío de dominio.
+- Separar estudiantes de administración desde el modelo de datos facilitó todo lo posterior.
+- PWA con sync no es trivial — requiere planificar el modelo de datos para conflictos.
