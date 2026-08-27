@@ -38,4 +38,17 @@ describe('homepage structure', () => {
     expect(experience).toBeGreaterThan(evidence);
     expect(blog).toBeGreaterThan(experience);
   });
+
+  test('final CTA is employment-first and links to the CV', async () => {
+    const cta = await read('src/components/sections/ContactCTA.astro');
+    expect(cta).toContain('¿Construimos algo útil?');
+    expect(cta).toContain('href="/cv"');
+    expect(cta).toContain('Contactarme');
+  });
+
+  test('blog copy is editorial rather than CMS-focused', async () => {
+    const posts = await read('src/components/sections/LatestPosts.astro');
+    expect(posts.toLowerCase()).not.toContain('cms');
+    expect(posts).toContain('problemas reales');
+  });
 });
