@@ -8,6 +8,7 @@ import { social } from '../data/social';
 interface Props {
   title?: string;
   description?: string;
+  socialDescription?: string;
   noindex?: boolean;
   socialImage?: string;
   socialImageAlt?: string;
@@ -16,11 +17,13 @@ interface Props {
 const {
   title = `${profile.name} — Software Engineer`,
   description = profile.summary,
+  socialDescription,
   noindex = false,
-  socialImage = '/og-image.jpg',
+  socialImage = '/social-card-v2.jpg',
   socialImageAlt = `${profile.name} — Software Engineer · Full Stack · Data Engineering`,
 } = Astro.props;
 
+const socialDescriptionContent = socialDescription ?? description;
 const siteUrl = Astro.site ?? new URL(profile.site);
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const socialImageUrl = new URL(socialImage, siteUrl);
@@ -55,7 +58,7 @@ const structuredData = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={profile.name} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={socialDescriptionContent} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImageUrl} />
     <meta property="og:image:width" content="1200" />
@@ -66,7 +69,7 @@ const structuredData = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@andres_gaibor" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={socialDescriptionContent} />
     <meta name="twitter:image" content={socialImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
 
