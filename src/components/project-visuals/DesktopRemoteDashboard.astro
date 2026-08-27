@@ -1,0 +1,90 @@
+---
+import DemoBadge from '../ui/DemoBadge.astro';
+---
+
+<div class="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] font-mono text-xs">
+  <div class="flex items-center justify-between border-b border-[var(--line)] bg-[var(--surface-soft)] px-4 py-2">
+    <div class="flex items-center gap-2">
+      <span class="size-2 rounded-full bg-[var(--accent)]"></span>
+      <span class="font-semibold text-[var(--text)]">Desktop Remote</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="rounded border border-[var(--line)] bg-[var(--surface)] px-1.5 py-0.5 text-[10px] text-[var(--muted)]">Mockup</span>
+      <DemoBadge label="Mockup" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-[140px_1fr]">
+    <aside class="border-r border-[var(--line)] bg-[var(--surface-soft)] p-3">
+      <nav class="space-y-1">
+        <a href="#" class="flex items-center gap-2 rounded-lg bg-[var(--accent-soft)] px-2 py-1.5 text-[var(--accent)]">
+          <span>📁</span> Files
+        </a>
+        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+          <span>⚡</span> Processes
+        </a>
+        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+          <span>⌨</span> Shell
+        </a>
+        <a href="#" class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[var(--muted)]">
+          <span>📋</span> Logs
+        </a>
+      </nav>
+    </aside>
+
+    <div class="space-y-4 p-3">
+      <div>
+        <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">Sesiones</p>
+        <div class="space-y-1">
+          <div class="flex items-center justify-between rounded border border-[var(--line)] bg-[var(--surface-soft)] px-2 py-1">
+            <span class="text-[var(--text)]">MacBook Pro</span>
+            <span class="flex items-center gap-1">
+              <span class="size-1.5 rounded-full bg-[var(--accent)]"></span>
+              <span class="text-[var(--muted)]">online</span>
+            </span>
+          </div>
+          <div class="flex items-center justify-between rounded border border-[var(--line)] bg-[var(--surface-soft)] px-2 py-1">
+            <span class="text-[var(--text)]">Debian Server</span>
+            <span class="flex items-center gap-1">
+              <span class="size-1.5 rounded-full bg-[var(--accent)]"></span>
+              <span class="text-[var(--muted)]">online</span>
+            </span>
+          </div>
+          <div class="flex items-center justify-between rounded border border-[var(--line)] bg-[var(--surface-soft)] px-2 py-1">
+            <span class="text-[var(--text)]">Agent</span>
+            <span class="flex items-center gap-1">
+              <span class="size-1.5 rounded-full bg-[var(--accent)]"></span>
+              <span class="text-[var(--muted)]">active</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">Terminal</p>
+        <div class="rounded border border-[var(--line)] bg-[var(--page)] p-2">
+          <p class="text-[var(--muted)]"><span class="text-[var(--accent)]">$</span> hostname</p>
+          <p class="text-[var(--text)]">demo-host</p>
+          <p class="mt-1 text-[var(--muted)]"><span class="text-[var(--accent)]">$</span> pwd</p>
+          <p class="text-[var(--text)]">/projects/demo</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">Actividad reciente</p>
+        <div class="space-y-1">
+          <div class="flex items-center justify-between rounded border border-[var(--line)] bg-[var(--surface-soft)] px-2 py-1">
+            <span class="text-[var(--muted)]">hostname</span>
+            <span class="text-[var(--accent)]">Exit 0</span>
+            <span class="text-[var(--muted)]">1m</span>
+          </div>
+          <div class="flex items-center justify-between rounded border border-[var(--line)] bg-[var(--surface-soft)] px-2 py-1">
+            <span class="text-[var(--muted)]">pwd</span>
+            <span class="text-[var(--accent)]">Exit 0</span>
+            <span class="text-[var(--muted)]">1m</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
