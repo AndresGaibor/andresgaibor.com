@@ -36,7 +36,7 @@ const structuredData = {
   name: profile.name,
   url: profile.site,
   jobTitle: 'Software Engineer',
-  sameAs: [social.github],
+  sameAs: [social.github, social.x],
 };
 ---
 
@@ -64,6 +64,7 @@ const structuredData = {
     <meta property="og:image:alt" content={socialImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@andres_gaibor" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />

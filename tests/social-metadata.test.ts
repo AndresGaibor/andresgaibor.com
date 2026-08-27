@@ -17,6 +17,7 @@ test('homepage exposes complete social sharing metadata', async () => {
   expect(html).toContain('<meta property="og:image:type" content="image/jpeg">');
   expect(html).toContain('<meta property="og:image:alt"');
   expect(html).toContain('<meta name="twitter:card" content="summary_large_image">');
+  expect(html).toContain('<meta name="twitter:site" content="@andres_gaibor">');
   expect(html).toContain('<meta name="twitter:image" content="https://andresgaibor.com/og-image.jpg">');
   expect(html).toContain('<meta name="twitter:image:alt"');
 });
