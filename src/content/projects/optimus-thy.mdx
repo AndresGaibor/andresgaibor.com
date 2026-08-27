@@ -16,11 +16,19 @@ status: prototype
 order: 1
 ---
 
+import OptimusDashboard from '../../components/project-visuals/OptimusDashboard.astro';
+import ProjectArchitecture from '../../components/projects/ProjectArchitecture.astro';
+import ProjectFeatureList from '../../components/projects/ProjectFeatureList.astro';
+import ProjectStatus from '../../components/projects/ProjectStatus.astro';
+import DemoBadge from '../../components/ui/DemoBadge.astro';
+
+<OptimusDashboard />
+
 ## El problema
 
 La información clínica, estudios, imágenes y resultados de apoyo pueden terminar dispersos entre procesos y formatos distintos. Optimus THY explora cómo centralizar ese flujo en una aplicación web con control de acceso y trazabilidad.
 
-## Mi alcance
+## Qué estoy construyendo
 
 Mi tesis se concentra en el componente de software: la gestión de pacientes e información clínica, asociación de estudios e imágenes, consumo del modelo de IA y presentación de resultados para revisión profesional.
 
@@ -28,20 +36,44 @@ No desarrollo el modelo clínico como producto diagnóstico ni presento la aplic
 
 ## Arquitectura
 
-El frontend se construye con React. La arquitectura de backend está orientada a Python/FastAPI, PostgreSQL y almacenamiento de archivos clínicos, separando datos estructurados de documentos e imágenes.
-
-El diseño contempla procesamiento local para flujos sensibles y una integración de inferencia en la que los resultados del modelo se almacenan y muestran como apoyo al análisis humano.
+<ProjectArchitecture
+  nodes={[
+    { label: 'Frontend', detail: 'React SPA' },
+    { label: 'API', detail: 'FastAPI / Python' },
+    { label: 'Persistencia', detail: 'PostgreSQL' },
+    { label: 'Archivos', detail: 'RustFS — filesystem local' },
+    { label: 'OCR / IA', detail: 'Procesamiento local asistivo' },
+  ]}
+/>
 
 ## Privacidad y trazabilidad
 
-- Roles diferenciados para personal autorizado.
-- Separación entre información clínica y archivos.
-- Registro de acciones relevantes y resultados procesados.
-- Arquitectura preparada para reducir exposición innecesaria de datos sensibles.
+<ProjectFeatureList items={[
+  { title: 'Roles diferenciados', description: 'Separación clara entre personal autorizado y funciones.' },
+  { title: 'Separación de datos', description: 'Información clínica y archivos en dominios distintos.' },
+  { title: 'Registro de acciones', description: 'Cada operación relevante deja un registro auditable.' },
+  { title: 'Reducción de exposición', description: 'Arquitectura pensada para minimizar datos innecesarios.' },
+]}
+/>
 
 ## Estado actual
 
-Es un proyecto de tesis en desarrollo. El frontend y el diseño del producto están más avanzados que la integración completa del backend y del flujo de IA.
+<ProjectStatus
+  implemented={[
+    'Experiencia frontend completa',
+    'Estructura del producto y navegación',
+    'Modelado de datos clínicos — fase inicial',
+    'Gestión de pacientes y asociaciones',
+    'UI para documentos y estudios',
+    'Diseño de flujos principales',
+  ]}
+  inProgress={[
+    'Integración backend — APIs completas',
+    'Flujo de IA — procesamiento local',
+    'Sistema de roles y autenticación',
+    'Validación y pruebas de integración',
+  ]}
+/>
 
 ## Qué demuestra
 

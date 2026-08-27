@@ -1,0 +1,71 @@
+---
+---
+
+<div class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl bg-[var(--surface-soft)] p-8">
+  <div class="absolute inset-0 opacity-30">
+    <svg class="h-full w-full" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pipeline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+      <rect width="320" height="180" fill="url(#pipeline-grad)"/>
+      <line x1="0" y1="90" x2="320" y2="90" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 4"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 flex w-full items-center justify-center gap-6">
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex h-14 w-14 items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface)]">
+        <svg class="h-7 w-7 text-[var(--muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="12" cy="5" rx="8" ry="3"/>
+          <path d="M4 5v6c0 1.657 3.582 3 8 3s8-1.343 8-3V5"/>
+          <path d="M4 11v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/>
+        </svg>
+      </div>
+      <span class="text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">Origen</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <div class="h-px w-8 bg-[var(--line)]"></div>
+      <div class="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)]">
+        <svg class="h-4 w-4 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+      <div class="h-px w-8 bg-[var(--line)]"></div>
+    </div>
+
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex h-14 w-14 items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface)]">
+        <svg class="h-7 w-7 text-[var(--muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+          <path d="M7 8h2M7 11h4"/>
+        </svg>
+      </div>
+      <span class="text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">Proceso</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <div class="h-px w-8 bg-[var(--line)]"></div>
+      <div class="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)]">
+        <svg class="h-4 w-4 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+      <div class="h-px w-8 bg-[var(--line)]"></div>
+    </div>
+
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex h-14 w-14 items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface)]">
+        <svg class="h-7 w-7 text-[var(--muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+        </svg>
+      </div>
+      <span class="text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">Destino</span>
+    </div>
+  </div>
+</div>
