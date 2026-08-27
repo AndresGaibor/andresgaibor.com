@@ -1,7 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
 import { profile } from '../../data/profile';
-import { social } from '../../data/social';
 ---
 
 <section class="relative overflow-hidden py-20 sm:py-28 lg:py-36">
@@ -23,7 +22,7 @@ import { social } from '../../data/social';
         <a href="/proyectos" class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5">
           Ver proyectos
         </a>
-        <a href={`mailto:${social.email}`} class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]">
+        <a href="/contacto" class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]">
           Contactarme
         </a>
       </div>

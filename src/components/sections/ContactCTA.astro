@@ -1,7 +1,7 @@
 ---
 import Container from '../ui/Container.astro';
+import EmailAddress from '../ui/EmailAddress.astro';
 import { profile } from '../../data/profile';
-import { social } from '../../data/social';
 ---
 
 <section class="py-20 sm:py-28">
@@ -10,8 +10,8 @@ import { social } from '../../data/social';
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Contacto</p>
       <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">¿Tienes un problema interesante que resolver?</h2>
       <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">{profile.availability}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href={`mailto:${social.email}`} class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline">{social.email}</a>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <div class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm text-[var(--page)]" aria-label="Correo de contacto"><EmailAddress tone="inverse" /></div>
         <a href="/contacto" class="rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold no-underline">Más formas de contacto</a>
       </div>
     </div>

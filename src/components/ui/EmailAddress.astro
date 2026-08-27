@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string;
+  tone?: 'default' | 'inverse' | 'muted';
+}
+
+const { class: className, tone = 'default' } = Astro.props;
+---
+
+<img
+  src="/contact-email.svg"
+  alt="Correo de contacto"
+  width="201"
+  height="18"
+  class:list={['email-address', `email-address--${tone}`, className]}
+  loading="eager"
+  decoding="async"
+/>
+
+<style>
+  .email-address { display: inline-block; width: auto; height: 1em; vertical-align: -0.08em; }
+  .email-address--muted { opacity: 0.72; }
+  .email-address--inverse { filter: invert(1); }
+  @media (prefers-color-scheme: dark) {
+    .email-address--default, .email-address--muted { filter: invert(1); }
+    .email-address--inverse { filter: none; }
+  }
+  @media print { .email-address { filter: none !important; opacity: 1; } }
+</style>
