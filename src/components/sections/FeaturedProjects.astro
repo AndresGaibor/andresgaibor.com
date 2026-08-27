@@ -2,19 +2,25 @@
 import { getCollection } from 'astro:content';
 import Container from '../ui/Container.astro';
 import SectionHeading from '../ui/SectionHeading.astro';
-import ProjectCard from '../projects/ProjectCard.astro';
+import FeaturedProjectCard from '../projects/FeaturedProjectCard.astro';
 
 const projects = (await getCollection('projects', ({ data }) => data.featured))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
+const [primary, ...secondary] = projects;
 ---
 
-<section class="py-20 sm:py-24">
+<section class="py-20 sm:py-28">
   <Container>
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-      <SectionHeading eyebrow="Trabajo destacado" title="Proyectos que demuestran cómo construyo." />
+      <SectionHeading eyebrow="Trabajo destacado" title="Sistemas que puedo explicar de principio a fin." />
       <a href="/proyectos" class="text-sm font-semibold text-[var(--accent)]">Ver todos →</a>
     </div>
-    <div class="mt-12 grid gap-5 lg:grid-cols-3">{projects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}</div>
+    <div class="mt-12 space-y-5">
+      {primary && <FeaturedProjectCard project={primary} variant="primary" />}
+      <div class="grid gap-5 lg:grid-cols-2">
+        {secondary.map((project) => <FeaturedProjectCard project={project} variant="secondary" />)}
+      </div>
+    </div>
   </Container>
 </section>

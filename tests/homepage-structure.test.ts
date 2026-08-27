@@ -20,4 +20,12 @@ describe('homepage structure', () => {
     const profilePanel = await read('src/components/sections/HeroProfile.astro').catch(() => '');
     expect(`${hero}\n${profilePanel}`).not.toMatch(/client:(load|idle|visible|only)/);
   });
+
+  test('featured work has one primary and two secondary projects', async () => {
+    const section = await read('src/components/sections/FeaturedProjects.astro');
+    expect(section).toContain('FeaturedProjectCard');
+    expect(section).toContain('variant="primary"');
+    expect(section).toContain('variant="secondary"');
+    expect(section).toContain('const [primary, ...secondary]');
+  });
 });
