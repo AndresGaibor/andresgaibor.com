@@ -1,6 +1,5 @@
 ---
 import Container from '../ui/Container.astro';
-import EmailAddress from '../ui/EmailAddress.astro';
 import { profile } from '../../data/profile';
 ---
 
@@ -8,11 +7,11 @@ import { profile } from '../../data/profile';
   <Container>
     <div class="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-7 sm:p-10 lg:p-14">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Contacto</p>
-      <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">¿Tienes un problema interesante que resolver?</h2>
+      <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">¿Construimos algo útil?</h2>
       <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">{profile.availability}</p>
-      <div class="mt-8 flex flex-wrap items-center gap-3">
-        <div class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm text-[var(--page)]" aria-label="Correo de contacto"><EmailAddress tone="inverse" /></div>
-        <a href="/contacto" class="rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold no-underline">Más formas de contacto</a>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contacto" class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline">Contactarme</a>
+        <a href="/cv" class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline">Ver CV</a>
       </div>
     </div>
   </Container>

@@ -1,17 +1,20 @@
 export const capabilities = [
   {
     title: 'Software Engineering',
-    description: 'Productos web, APIs y herramientas internas mantenibles, rápidas y pensadas para crecer.',
+    description:
+      'Diseño productos y servicios web completos, conectando experiencia de usuario, APIs, persistencia y despliegue con una arquitectura mantenible.',
     items: ['TypeScript', 'React', 'Astro', 'Bun', 'APIs', 'PostgreSQL'],
   },
   {
     title: 'Data Engineering',
-    description: 'Pipelines, SQL, procesamiento y exportación de datos con foco en rendimiento y costo.',
-    items: ['BigQuery', 'SQL', 'ETL / ELT', 'Qlik', 'Data pipelines', 'BI'],
+    description:
+      'Modelo, transformo y muevo datos mediante SQL, pipelines e integraciones orientadas a rendimiento, claridad y operación sostenible.',
+    items: ['BigQuery', 'SQL', 'ETL / ELT', 'Data modeling', 'Data pipelines', 'BI'],
   },
   {
     title: 'Automation',
-    description: 'Automatización de procesos, integraciones y herramientas para eliminar trabajo manual repetitivo.',
+    description:
+      'Construyo automatizaciones y tooling para conectar sistemas, reducir trabajo manual y ejecutar flujos técnicos de forma controlada.',
     items: ['Python', 'Web automation', 'APIs', 'Integrations', 'AI tooling', 'Linux'],
   },
 ] as const;
@@ -19,12 +22,11 @@ export const capabilities = [
 export const coreTechnologies = [
   'TypeScript',
   'React',
-  'Astro',
-  'Bun',
   'Python',
-  'SQL',
+  'FastAPI',
+  'Bun',
   'PostgreSQL',
-  'BigQuery',
-  'Docker',
+  'SQL',
   'Cloudflare',
+  'Docker',
 ] as const;

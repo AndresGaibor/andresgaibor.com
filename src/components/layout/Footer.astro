@@ -6,14 +6,14 @@ import { socialLinks } from '../../data/social';
 
 <footer class="mt-24 border-t border-[var(--line)] py-10">
   <Container class="flex flex-col gap-5 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
-    <p>© {new Date().getFullYear()} {profile.name}. Construido con Astro.</p>
+    <p>{profile.name} · Software Engineer</p>
     <div class="flex flex-wrap gap-5">
       {socialLinks.map((item) => (
         <a class="hover:text-[var(--text)]" href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noreferrer' : undefined}>
           {item.label}
         </a>
       ))}
-      <a class="hover:text-[var(--text)]" href="/contacto">Contacto</a>
+      <a class="hover:text-[var(--text)]" href="/contacto">Email</a>
       <a class="hover:text-[var(--text)]" href="/rss.xml">RSS</a>
     </div>
   </Container>
