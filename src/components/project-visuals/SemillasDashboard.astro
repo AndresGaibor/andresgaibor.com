@@ -1,0 +1,85 @@
+---
+import DemoBadge from '../ui/DemoBadge.astro';
+---
+
+<div class="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+  <div class="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
+    <span class="text-sm font-semibold text-[var(--text)]">Semillas</span>
+    <DemoBadge />
+  </div>
+
+  <div class="space-y-5 p-4">
+    <div>
+      <p class="text-lg font-semibold text-[var(--text)]">Hola!</p>
+      <p class="text-sm text-[var(--muted)]">Continúa aprendiendo</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3">
+      <div class="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] p-3 text-center">
+        <p class="text-lg">📐</p>
+        <p class="mt-1 text-xs font-medium text-[var(--text)]">Matemáticas</p>
+      </div>
+      <div class="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] p-3 text-center">
+        <p class="text-lg">🔬</p>
+        <p class="mt-1 text-xs font-medium text-[var(--text)]">Ciencias</p>
+      </div>
+      <div class="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] p-3 text-center">
+        <p class="text-lg">📖</p>
+        <p class="mt-1 text-xs font-medium text-[var(--text)]">Lectura</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">Tu progreso</p>
+        <div class="space-y-2">
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted)]">Matemáticas</span>
+            </div>
+            <div class="h-2 rounded-full bg-[var(--surface-soft)]">
+              <div class="h-2 w-2/3 rounded-full bg-[var(--accent)]"></div>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted)]">Ciencias</span>
+            </div>
+            <div class="h-2 rounded-full bg-[var(--surface-soft)]">
+              <div class="h-2 w-1/2 rounded-full bg-[var(--accent)]"></div>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted)]">Lectura</span>
+            </div>
+            <div class="h-2 rounded-full bg-[var(--surface-soft)]">
+              <div class="h-2 w-3/4 rounded-full bg-[var(--accent)]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">Actividad reciente</p>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[var(--text)]">Actividad 1</span>
+            <span class="text-[var(--accent)]">✓</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[var(--text)]">Actividad 2</span>
+            <span class="text-[var(--accent)]">✓</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[var(--text)]">Actividad 3</span>
+            <span class="text-[var(--muted)]">→</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[var(--text)]">Actividad 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
