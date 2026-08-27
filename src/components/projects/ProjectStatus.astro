@@ -1,0 +1,38 @@
+---
+interface Props {
+  implemented: string[];
+  inProgress: string[];
+}
+
+const { implemented, inProgress } = Astro.props;
+---
+
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+  <div class="space-y-3">
+    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">Implementado</p>
+    <ul class="space-y-2">
+      {implemented.map((item) => (
+        <li class="flex items-center gap-2 text-sm text-[var(--muted)]">
+          <svg class="size-4 text-[var(--accent)]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 8 6 11 13 4"/>
+          </svg>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="space-y-3">
+    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">En progreso</p>
+    <ul class="space-y-2">
+      {inProgress.map((item) => (
+        <li class="flex items-center gap-2 text-sm text-[var(--muted)]">
+          <svg class="size-4 text-[var(--line)]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="8" x2="12" y2="8"/>
+          </svg>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
