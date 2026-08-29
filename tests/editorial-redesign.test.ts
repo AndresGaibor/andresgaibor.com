@@ -87,6 +87,39 @@ test('project cases expose the four exact narrative headings', async () => {
   }
 });
 
+test('about page exposes factual editorial composition and preserves related routes', async () => {
+  const about = await read('src/pages/sobre-mi.astro');
+  const experiencia = await read('src/pages/experiencia.astro');
+  const contacto = await read('src/pages/contacto.astro');
+  const cv = await read('src/pages/cv.astro');
+
+  expect(about).toContain("import { profile } from '../data/profile'");
+  expect(about).toContain("import { education } from '../data/education'");
+  expect(about).toContain("import { experience } from '../data/experience'");
+  expect(about).toContain('/images/portrait-about.webp');
+  expect(about).toContain('width="1672"');
+  expect(about).toContain('height="941"');
+  expect(about).toContain('loading="lazy"');
+  expect(about).toContain('decoding="async"');
+  expect(about).toContain('aspect-ratio: 1672 / 941');
+  expect(about).toContain('Andrés Gaibor trabajando en un entorno de desarrollo de software');
+  expect(about).toContain('Me gusta entender el problema completo antes de construir la solución.');
+  expect(about).toContain('{profile.location}');
+  expect(about).toContain('{education[0].title}');
+  expect(about).toContain('{education[0].institution}');
+  expect(about).toContain('{education[0].description}');
+  expect(about).toContain('experience.map');
+  expect(about).toContain('href="/proyectos"');
+  expect(about).toContain('href="/cv"');
+  expect(about).not.toContain('<aside');
+  expect(about).not.toContain('Perfil actual');
+
+  expect(experiencia).toContain('Qué puedo aportar a un equipo técnico.');
+  expect(contacto).toContain('Cuéntame qué quieres mejorar.');
+  expect(cv).toContain('Versión web imprimible del CV.');
+  expect(cv).toContain("id=\"print-cv\"");
+});
+
 test('product source contains no Downloads references', async () => {
   const files = [...(await sourceFiles('src')), ...(await sourceFiles('public'))];
   const content = await Promise.all(files.map(read));
