@@ -75,16 +75,15 @@ test('work process exposes four titles and descriptions', async () => {
   expect((process.match(/title:/g) ?? []).length).toBe(4);
 });
 
-test('project cases expose required narrative labels', async () => {
+test('project cases expose the four exact narrative headings', async () => {
   const projects = await Promise.all(
     ['optimus-thy', 'semillas', 'desktop-remote'].map((id) => read(`src/content/projects/${id}.mdx`)),
   );
 
   for (const project of projects) {
-    expect(project).toContain('Problema');
-    expect(project).toContain('Qué construí');
-    expect(project).toContain('Mi participación');
-    expect(project).toContain('Tecnologías');
+    for (const heading of ['## Problema', '## Qué construí', '## Mi participación', '## Estado actual']) {
+      expect(project).toContain(heading);
+    }
   }
 });
 

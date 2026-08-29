@@ -46,6 +46,24 @@ describe('project visuals', () => {
     expect(card).toContain('DesktopRemoteDashboard');
   });
 
+  test('project presentation exposes factual narrative and honest status contracts', async () => {
+    const card = await readFile('src/components/projects/FeaturedProjectCard.astro', 'utf8');
+    const layout = await readFile('src/layouts/ProjectLayout.astro', 'utf8');
+    const index = await readFile('src/pages/proyectos/index.astro', 'utf8');
+
+    for (const label of ['Problema', 'Qué construí', 'Mi participación']) {
+      expect(card).toContain(label);
+    }
+    expect(layout).toContain('Tecnologías');
+    expect(layout).toContain("active: 'En desarrollo'");
+    expect(layout).toContain("prototype: 'Prototipo'");
+    expect(layout).toContain("completed: 'Completado'");
+    expect(card).toContain("active: 'En desarrollo'");
+    expect(card).toContain("prototype: 'Prototipo'");
+    expect(card).toContain("completed: 'Completado'");
+    expect(index).toContain('const [primary, ...secondary]');
+  });
+
   test('Dashboard sidebar nav uses buttons not anchor tags', async () => {
     const navDashboards = ['OptimusDashboard.astro', 'DesktopRemoteDashboard.astro'];
     for (const file of navDashboards) {
