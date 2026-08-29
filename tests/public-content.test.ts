@@ -44,7 +44,7 @@ describe('public portfolio policy', () => {
   });
 
   test('uses clear approved professional positioning', () => {
-    expect(profile.role).toBe('Software a medida · Automatización · Datos');
+    expect(profile.role).toBe('Software a medida · Automatización · Datos e integraciones');
     expect(profile.headline).toBe('Convierto problemas y procesos manuales en software útil.');
   });
 

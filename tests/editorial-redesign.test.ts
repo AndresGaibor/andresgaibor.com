@@ -5,6 +5,16 @@ import { readFile, readdir } from 'node:fs/promises';
 
 const read = (path: string) => readFile(path, 'utf8');
 
+function attribute(html: string, name: string): string | undefined {
+  return html.match(new RegExp(`${name}=["']([^"']+)["']`))?.[1];
+}
+
+function imageBySource(html: string, source: string): string {
+  const image = html.match(new RegExp(`<img\\b[^>]*src=["']${source.replaceAll('/', '\\/')}["'][^>]*>`))?.[0];
+  expect(image).toBeDefined();
+  return image ?? '';
+}
+
 async function sourceFiles(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
   const files: string[] = [];
@@ -131,6 +141,53 @@ test('required public routes remain generated', () => {
   for (const route of ['', 'proyectos', 'sobre-mi', 'experiencia', 'contacto', 'cv']) {
     expect(existsSync(route ? `dist/${route}/index.html` : 'dist/index.html')).toBe(true);
   }
+});
+
+test('quality gate preserves routes, drafts, images, accessibility and metadata', async () => {
+  const routes = ['', 'proyectos', 'sobre-mi', 'experiencia', 'contacto', 'cv'];
+  for (const route of routes) {
+    expect(existsSync(route ? `dist/${route}/index.html` : 'dist/index.html')).toBe(true);
+  }
+
+  const distFiles = await sourceFiles('dist');
+  const textFiles = distFiles.filter((path) => /\\.(html|js|css|xml|txt|json)$/.test(path));
+  const distText = (await Promise.all(textFiles.map(read))).join('\\n');
+  expect(distText).not.toContain('/Users/andresgaibor/Downloads');
+  expect(distText).not.toContain('Exportaciones BigQuery a gran escala sin romper el presupuesto');
+  expect(distText).not.toContain('borrador-exportaciones-bigquery');
+
+  const home = await read('dist/index.html');
+  const heroImage = imageBySource(home, '/images/portrait-hero.webp');
+  expect(attribute(heroImage, 'alt')).toBe('Retrato de Andrés Gaibor en su espacio de trabajo');
+  expect(attribute(heroImage, 'width')).toBe('1122');
+  expect(attribute(heroImage, 'height')).toBe('1402');
+  expect(attribute(heroImage, 'loading')).not.toBe('lazy');
+
+  const about = await read('dist/sobre-mi/index.html');
+  const aboutImage = imageBySource(about, '/images/portrait-about.webp');
+  expect(attribute(aboutImage, 'alt')).toBe('Andrés Gaibor trabajando en un entorno de desarrollo de software');
+  expect(attribute(aboutImage, 'width')).toBe('1672');
+  expect(attribute(aboutImage, 'height')).toBe('941');
+  expect(attribute(aboutImage, 'loading')).toBe('lazy');
+});
+
+test('quality gate preserves accessibility and metadata source contracts', async () => {
+  const layout = await read('src/layouts/BaseLayout.astro');
+  const globalStyles = await read('src/styles/global.css');
+  const rss = await read('src/pages/rss.xml.js');
+
+  expect(layout).toContain('href="#contenido"');
+  expect(layout).toContain('<main id="contenido">');
+  expect(globalStyles).toContain(':focus-visible');
+  expect(layout).toContain("'@type': 'Person'");
+  expect(layout).toContain("socialImage = '/social-card-v2.jpg'");
+  expect(layout).toContain('rel="canonical"');
+  expect(layout).toContain('application/rss+xml');
+  expect(rss).toContain("getCollection('blog', ({ data }) => !data.draft)");
+
+  const productSource = (await Promise.all((await sourceFiles('src')).map(read))).join('\\n');
+  expect(productSource).not.toMatch(/(?:w-screen|min-w-screen)/);
+  expect(productSource).not.toMatch(/style=["'][^"']*width:\\s*(?:[1-9]\\d{3,}|\\d{3,}\\.[^"']*px)/);
 });
 
 test('draft blog posts stay excluded', async () => {
