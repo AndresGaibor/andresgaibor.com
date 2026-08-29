@@ -1,17 +1,30 @@
 ---
 import Container from '../ui/Container.astro';
-import { profile } from '../../data/profile';
 ---
 
-<section class="py-20 sm:py-28">
+<section class="py-16 sm:py-20">
   <Container>
     <div class="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-7 sm:p-10 lg:p-14">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Contacto</p>
-      <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">¿Construimos algo útil?</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">{profile.availability}</p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+        ¿Tienes algo que quieres mejorar?
+      </h2>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+        Cuéntame el problema como lo explicarías normalmente. No necesitas saber qué tecnología utilizar ni tener todo definido. Puedo ayudarte a entender qué solución tendría sentido construir.
+      </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/contacto" class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline">Contactarme</a>
-        <a href="/cv" class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline">Ver CV</a>
+        <a
+          href="/contacto"
+          class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline"
+        >
+          Contarme mi idea
+        </a>
+        <a
+          href="/cv"
+          class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline"
+        >
+          Ver CV
+        </a>
       </div>
     </div>
   </Container>

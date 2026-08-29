@@ -9,14 +9,23 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 const [primary, ...secondary] = projects;
 ---
 
-<BaseLayout title="Proyectos" description="Casos de estudio de software, datos, automatización y developer tooling construidos por Andrés Gaibor.">
-  <Container class="py-20 sm:py-28">
-    <SectionHeading eyebrow="Proyectos" title="No solo qué construí, sino por qué lo construí así." description="Cada caso de estudio explica el problema, la arquitectura, decisiones técnicas y lo que aprendí." />
-    <div class="mt-12 space-y-5">
+<BaseLayout
+  title="Proyectos"
+  description="Proyectos y soluciones de software, datos y automatización construidos por Andrés Gaibor."
+>
+  <Container class="py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="Proyectos"
+      title="Proyectos y soluciones que he construido."
+      description="Cada caso muestra qué problema había, cómo lo resolví y, para quien quiera profundizar, las decisiones técnicas detrás."
+    />
+    <div class="mt-10 space-y-5">
       {primary && <FeaturedProjectCard project={primary} variant="primary" />}
       {secondary.length > 0 && (
         <div class="grid gap-5 lg:grid-cols-2">
-          {secondary.map((project) => <FeaturedProjectCard project={project} variant="secondary" />)}
+          {secondary.map((project) => (
+            <FeaturedProjectCard project={project} variant="secondary" />
+          ))}
         </div>
       )}
     </div>

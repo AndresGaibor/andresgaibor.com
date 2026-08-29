@@ -17,33 +17,24 @@ import { profile } from '../../data/profile';
         <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
           {profile.summary}
         </p>
-
-        <div class="mt-9 flex flex-wrap gap-3">
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href="/contacto"
+            class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5"
+          >
+            Cuéntame qué necesitas
+          </a>
           <a
             href="/proyectos"
-            class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5"
+            class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]"
           >
             Ver proyectos
           </a>
-          <a
-            href="/experiencia"
-            class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]"
-          >
-            Ver experiencia
-          </a>
-          <a
-            href="/contacto"
-            class="px-2 py-3 text-sm font-semibold text-[var(--accent)] no-underline"
-          >
-            Contactarme
+          <a href="/cv" class="px-2 py-3 text-sm font-semibold text-[var(--accent)] no-underline">
+            Ver CV
           </a>
         </div>
-
-        <p class="mt-10 text-sm text-[var(--muted)]">
-          Software Engineer · Full Stack + Data · Ecuador · Remoto
-        </p>
       </div>
-
       <HeroProfile />
     </div>
   </Container>

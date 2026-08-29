@@ -9,16 +9,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 3);
 ---
 
-<section class="border-y border-[var(--line)] py-20 sm:py-24">
+<section class="border-y border-[var(--line)] py-16 sm:py-20">
   <Container>
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionHeading
-        eyebrow="Blog"
-        title="Notas técnicas nacidas de problemas reales."
-        description="Arquitectura, producto, automatización, datos e IA explicados desde decisiones que he tenido que tomar construyendo sistemas."
+        eyebrow="Ideas y aprendizajes"
+        title="Notas nacidas de problemas reales."
+        description="Escribo sobre decisiones de software, automatización, datos e inteligencia artificial que aparecen al construir sistemas."
       />
       <a href="/blog" class="text-sm font-semibold text-[var(--accent)]">Ver blog →</a>
     </div>
-    <div class="mt-10 grid gap-5">{posts.map((post) => <PostCard post={post} />)}</div>
+    <div class="mt-10 grid gap-5">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
   </Container>
 </section>

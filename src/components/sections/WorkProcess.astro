@@ -1,0 +1,26 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { workProcess } from '../../data/work-process';
+---
+
+<section class="border-y border-[var(--line)] bg-[var(--surface-soft)] py-16 sm:py-20">
+  <Container>
+    <SectionHeading
+      eyebrow="Cómo trabajo"
+      title="Del problema a una solución que puedas usar."
+      description="No necesitas llegar con requisitos técnicos. El proceso empieza por entender qué quieres mejorar."
+    />
+    <div class="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
+      {workProcess.map((item, index) => (
+        <article class="bg-[var(--surface)] p-6 sm:p-8">
+          <p class="text-xs font-semibold tabular-nums text-[var(--muted)]">
+            {String(index + 1).padStart(2, '0')}
+          </p>
+          <h3 class="mt-5 text-xl font-semibold tracking-tight">{item.title}</h3>
+          <p class="mt-3 max-w-xl leading-7 text-[var(--muted)]">{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>

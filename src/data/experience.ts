@@ -1,20 +1,20 @@
 export const experience = [
   {
-    period: '2026 — Actualidad',
+    period: 'Perfil actual',
     title: 'Software Engineering & Data Engineering',
     description:
-      'Diseño y construcción de productos, automatizaciones, integraciones y sistemas de datos, desde la interfaz hasta el despliegue.',
+      'Construyo sistemas completos: interfaces, backend, datos, automatizaciones e infraestructura conectados para resolver necesidades reales.',
   },
   {
-    period: 'Product Engineering',
+    period: 'Desarrollo de producto',
     title: 'Full Stack de extremo a extremo',
     description:
-      'Arquitectura de frontend y backend, APIs, persistencia, seguridad, experiencia de usuario y evolución del producto como un sistema completo.',
+      'Trabajo en la experiencia de usuario, APIs, persistencia, seguridad y evolución del producto como un sistema completo.',
   },
   {
-    period: 'Automation & Tooling',
+    period: 'Automatización',
     title: 'Infraestructura para reducir trabajo manual',
     description:
-      'Automatización de flujos técnicos, developer tooling, integraciones, contenedores y ejecución remota controlada.',
+      'Creo integraciones, herramientas, contenedores y ejecución remota controlada para hacer más claro y repetible el trabajo técnico.',
   },
 ] as const;

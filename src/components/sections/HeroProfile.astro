@@ -2,30 +2,13 @@
 import { profile } from '../../data/profile';
 ---
 
-<aside class="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-3 lg:mx-0 lg:justify-self-end">
-  <div class="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[var(--surface-soft)]">
-    {
-      profile.portrait ? (
-        <img src={profile.portrait} alt={`Retrato de ${profile.name}`} class="size-full object-cover" />
-      ) : (
-        <div
-          class="grid size-full place-items-center text-6xl font-semibold tracking-[-0.08em]"
-          aria-hidden="true"
-        >
-          {profile.shortName}
-        </div>
-      )
-    }
-  </div>
-
-  <dl class="grid gap-px overflow-hidden rounded-2xl bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-1">
-    <div class="bg-[var(--surface)] p-4">
-      <dt class="text-xs text-[var(--muted)]">Perfil</dt>
-      <dd class="mt-1 font-semibold">Full Stack + Data</dd>
-    </div>
-    <div class="bg-[var(--surface)] p-4">
-      <dt class="text-xs text-[var(--muted)]">Base</dt>
-      <dd class="mt-1 font-semibold">{profile.location}</dd>
-    </div>
-  </dl>
+<aside class="relative mx-auto w-full max-w-sm rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-7 lg:mx-0 lg:justify-self-end">
+  <p class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Puedo ayudarte con</p>
+  <ul class="mt-6 space-y-4">
+    <li class="border-t border-[var(--line)] pt-4 font-semibold">Sistemas para administrar procesos</li>
+    <li class="border-t border-[var(--line)] pt-4 font-semibold">Automatización de tareas repetitivas</li>
+    <li class="border-t border-[var(--line)] pt-4 font-semibold">Datos, reportes e integraciones</li>
+    <li class="border-t border-[var(--line)] pt-4 font-semibold">Software web a medida</li>
+  </ul>
+  <p class="mt-8 border-t border-[var(--line)] pt-5 text-sm text-[var(--muted)]">Trabajo desde {profile.location}</p>
 </aside>

@@ -4,12 +4,18 @@ import { profile } from '../../data/profile';
 import { socialLinks } from '../../data/social';
 ---
 
-<footer class="mt-24 border-t border-[var(--line)] py-10">
+<footer class="mt-16 border-t border-[var(--line)] py-10">
   <Container class="flex flex-col gap-5 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
     <p>{profile.name} · Software Engineer</p>
     <div class="flex flex-wrap gap-5">
+      <a class="hover:text-[var(--text)]" href="/blog">Blog</a>
       {socialLinks.map((item) => (
-        <a class="hover:text-[var(--text)]" href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noreferrer' : undefined}>
+        <a
+          class="hover:text-[var(--text)]"
+          href={item.href}
+          target={item.href.startsWith('http') ? '_blank' : undefined}
+          rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+        >
           {item.label}
         </a>
       ))}

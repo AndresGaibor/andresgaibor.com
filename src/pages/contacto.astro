@@ -2,20 +2,40 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/ui/Container.astro';
 import EmailAddress from '../components/ui/EmailAddress.astro';
-import { profile } from '../data/profile';
 import { socialLinks } from '../data/social';
 ---
 
-<BaseLayout title="Contacto" description="Contacta con Andrés Gaibor para oportunidades profesionales o proyectos de software y datos.">
-  <Container class="py-20 sm:py-28">
+<BaseLayout
+  title="Contacto"
+  description="Contacta con Andrés Gaibor para oportunidades profesionales o proyectos de software y datos."
+>
+  <Container class="py-16 sm:py-20">
     <div class="max-w-3xl">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Contacto</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-6xl">Hablemos de trabajo, producto o datos.</h1>
-      <p class="mt-6 text-lg leading-8 text-[var(--muted)]">{profile.availability}</p>
-      <div class="mt-8 inline-flex rounded-xl bg-[var(--text)] px-5 py-3 text-[var(--page)]" aria-label="Correo de contacto"><EmailAddress tone="inverse" /></div>
+      <h1 class="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-6xl">
+        Cuéntame qué quieres mejorar.
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-[var(--muted)]">
+        Puede ser un proceso que haces manualmente, información que necesitas organizar, un sistema que ya no funciona como necesitas o una idea que quieres convertir en software.
+      </p>
+      <p class="mt-4 text-[var(--muted)]">No necesitas llegar con requisitos técnicos ni con la solución definida.</p>
+      <div
+        class="mt-8 inline-flex rounded-xl bg-[var(--text)] px-5 py-3 text-[var(--page)]"
+        aria-label="Correo de contacto"
+      >
+        <EmailAddress tone="inverse" />
+      </div>
     </div>
-    <div class="mt-14 grid gap-4 sm:grid-cols-2">
-      {socialLinks.map((item) => <a href={item.href} class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 no-underline transition-transform hover:-translate-y-0.5"><p class="text-sm text-[var(--muted)]">{item.label}</p><p class="mt-2 font-semibold">Abrir →</p></a>)}
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+      {socialLinks.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 no-underline transition-transform hover:-translate-y-0.5"
+        >
+          <p class="text-sm text-[var(--muted)]">{item.label}</p>
+          <p class="mt-2 font-semibold">Abrir →</p>
+        </a>
+      ))}
     </div>
   </Container>
 </BaseLayout>

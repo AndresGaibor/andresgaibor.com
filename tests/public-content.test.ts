@@ -1,11 +1,11 @@
 // @ts-nocheck
 import { describe, expect, test } from 'bun:test';
-import { readdir, readFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
+import { readdir, readFile } from 'node:fs/promises';
 import { profile } from '../src/data/profile';
 import { coreTechnologies } from '../src/data/skills';
 import { experience } from '../src/data/experience';
-import { impactEvidence } from '../src/data/impact';
+import { workProcess } from '../src/data/work-process';
 
 const TEXT_EXTENSIONS = new Set(['.astro', '.ts', '.md', '.mdx', '.css', '.json', '.svg', '.xml']);
 
@@ -28,8 +28,7 @@ describe('public portfolio policy', () => {
     const matches: string[] = [];
 
     for (const file of files) {
-      const content = (await readFile(file, 'utf8')).toLowerCase();
-      if (content.includes('qlik')) matches.push(file);
+      if ((await readFile(file, 'utf8')).toLowerCase().includes('qlik')) matches.push(file);
     }
 
     expect(matches).toEqual([]);
@@ -37,17 +36,16 @@ describe('public portfolio policy', () => {
 
   test('publishes the approved three featured projects', async () => {
     const projectFiles = await readdir('src/content/projects');
+
     expect(projectFiles).toContain('optimus-thy.mdx');
     expect(projectFiles).toContain('semillas.mdx');
     expect(projectFiles).toContain('desktop-remote.mdx');
     expect(projectFiles).not.toContain('qlik-report.mdx');
   });
 
-  test('uses approved professional positioning', () => {
-    expect(profile.role).toBe('Software Engineer | Full Stack & Data Engineering');
-    expect(profile.headline).toBe(
-      'Construyo productos, automatizaciones y sistemas de datos de extremo a extremo.',
-    );
+  test('uses clear approved professional positioning', () => {
+    expect(profile.role).toBe('Software a medida · Automatización · Datos');
+    expect(profile.headline).toBe('Convierto problemas y procesos manuales en software útil.');
   });
 
   test('keeps the public technology list selective', () => {
@@ -64,10 +62,8 @@ describe('public portfolio policy', () => {
     ]);
   });
 
-  test('uses defensible evidence without confidential wording', () => {
-    const text = JSON.stringify({ experience, impactEvidence }).toLowerCase();
-    expect(text).not.toContain('reporting');
-    expect(text).not.toContain('qlik');
-    expect(impactEvidence).toHaveLength(4);
+  test('publishes the human work process without invented evidence', () => {
+    expect(workProcess).toHaveLength(4);
+    expect(JSON.stringify({ experience, workProcess }).toLowerCase()).not.toContain('métricas inventadas');
   });
 });

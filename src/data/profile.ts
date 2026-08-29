@@ -1,13 +1,13 @@
 export const profile = {
   name: 'Andrés Gaibor',
   shortName: 'AG',
-  role: 'Software Engineer | Full Stack & Data Engineering',
-  headline: 'Construyo productos, automatizaciones y sistemas de datos de extremo a extremo.',
+  role: 'Software a medida · Automatización · Datos',
+  headline: 'Convierto problemas y procesos manuales en software útil.',
   summary:
-    'Diseño desde interfaces y APIs hasta integraciones, pipelines y procesamiento de datos a escala.',
+    'Creo sistemas web, automatizaciones y soluciones de datos para negocios y equipos. Puedo ayudarte desde entender el problema hasta construir y poner en funcionamiento la solución.',
   location: 'Ecuador · Remoto',
   availability:
-    'Abierto a oportunidades como Software Engineer y a proyectos seleccionados de producto, backend, datos y automatización.',
+    'Disponible para oportunidades profesionales y proyectos seleccionados. Si tienes un proceso que quieres mejorar, una idea que quieres convertir en software o un sistema que necesita evolucionar, podemos hablarlo.',
   site: 'https://andresgaibor.com',
   portrait: null as string | null,
 } as const;
