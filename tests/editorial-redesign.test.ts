@@ -45,6 +45,7 @@ test('public assets use semantic paths', async () => {
 
   expect(existsSync('public/images/portrait-hero.webp')).toBe(true);
   expect(existsSync('public/images/portrait-about.webp')).toBe(true);
+  expect(existsSync('public/images/editorial-texture.webp')).toBe(true);
   expect(productSource).not.toContain('/Users/andresgaibor/Downloads');
   expect(productSource).not.toMatch(/Downloads[^\n]*\.png/);
 });
