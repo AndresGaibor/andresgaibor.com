@@ -130,6 +130,31 @@ test('about page exposes factual editorial composition and preserves related rou
   expect(cv).toContain("id=\"print-cv\"");
 });
 
+test('header keeps mobile actions discoverable without a scrollable nav', async () => {
+  const header = await read('src/components/layout/Header.astro');
+
+  expect(header).not.toContain('overflow-x-auto');
+  expect(header).toMatch(/<nav[^>]*class="[^"]*hidden[^"]*sm:flex/);
+  expect(header).toContain('<details');
+  expect(header).toMatch(/<summary[^>]*>\s*Menú\s*<\/summary>/);
+  expect(header).toContain('aria-label="Navegación móvil"');
+  expect(header).toContain("{ href: '/#servicios', label: 'Servicios', section: true }");
+  expect(header).toContain("{ href: '/proyectos', label: 'Proyectos' }");
+  expect(header).toContain("{ href: '/sobre-mi', label: 'Sobre mí' }");
+  expect(header).toContain("{ href: '/cv', label: 'CV' }");
+  expect((header.match(/nav\.map/g) ?? []).length).toBe(2);
+  expect((header.match(/id="theme-toggle"/g) ?? []).length).toBe(1);
+  expect(header).toContain('class="min-h-11 rounded-lg border');
+  expect(header).toContain('class="flex min-h-11 items-center rounded-lg bg-[var(--text)]');
+  expect(header).toContain('class="flex min-h-11 min-w-11 items-center');
+  expect(header).toMatch(/<summary[^>]*class="[^"]*min-h-11/);
+
+  const desktopNavEnd = header.indexOf('</nav>');
+  const themeToggle = header.indexOf('id="theme-toggle"');
+  expect(themeToggle).toBeGreaterThan(desktopNavEnd);
+  expect(header.indexOf('aria-label="Navegación móvil"')).toBeGreaterThan(themeToggle);
+});
+
 test('product source contains no Downloads references', async () => {
   const files = [...(await sourceFiles('src')), ...(await sourceFiles('public'))];
   const content = await Promise.all(files.map(read));
