@@ -1,14 +1,14 @@
 export const workProcess = [
   {
-    title: 'Entiendo el problema',
+    title: 'Entiendo',
     description: 'Reviso cómo trabajas hoy, qué te está quitando tiempo y qué resultado necesitas.',
   },
   {
-    title: 'Propongo una solución simple',
+    title: 'Propongo',
     description: 'Defino qué conviene construir, qué no hace falta y cómo debería funcionar.',
   },
   {
-    title: 'Construyo y pruebo',
+    title: 'Construyo',
     description: 'Desarrollo por etapas para revisar el resultado, detectar problemas y corregir antes de terminar.',
   },
   {

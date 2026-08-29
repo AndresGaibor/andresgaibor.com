@@ -1,41 +1,39 @@
 ---
 import Container from '../ui/Container.astro';
-import HeroProfile from './HeroProfile.astro';
 import { profile } from '../../data/profile';
 ---
 
-<section class="relative overflow-hidden py-20 sm:py-28 lg:py-32">
+<section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
   <Container>
-    <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,1.55fr)_minmax(17rem,.65fr)] lg:gap-16">
-      <div class="max-w-4xl">
-        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-          {profile.role}
-        </p>
-        <h1 class="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+    <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,.85fr)] lg:gap-20">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">{profile.role}</p>
+        <h1 class="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.055em] sm:text-6xl lg:text-[4.5rem]">
           {profile.headline}
         </h1>
-        <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
-          {profile.summary}
-        </p>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">{profile.summary}</p>
         <div class="mt-9 flex flex-wrap items-center gap-3">
-          <a
-            href="/contacto"
-            class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5"
-          >
+          <a href="/contacto" class="rounded-xl bg-[var(--text)] px-5 py-3 text-sm font-semibold text-[var(--page)] no-underline transition-transform hover:-translate-y-0.5">
             Cuéntame qué necesitas
           </a>
-          <a
-            href="/proyectos"
-            class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]"
-          >
+          <a href="/proyectos" class="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold no-underline transition-colors hover:border-[var(--muted)]">
             Ver proyectos
           </a>
-          <a href="/cv" class="px-2 py-3 text-sm font-semibold text-[var(--accent)] no-underline">
-            Ver CV
-          </a>
+          <a href="/cv" class="px-2 py-3 text-sm font-semibold text-[var(--accent)] no-underline">Ver CV</a>
         </div>
       </div>
-      <HeroProfile />
+      <figure class="mx-auto w-full max-w-sm lg:mr-8">
+        <img
+          src="/images/portrait-hero.webp"
+          width="1122"
+          height="1402"
+          loading="eager"
+          decoding="async"
+          alt="Retrato de Andrés Gaibor en su espacio de trabajo"
+          class="h-auto w-full rounded-[2rem] object-cover"
+          style="aspect-ratio: 1122 / 1402;"
+        />
+      </figure>
     </div>
   </Container>
 </section>

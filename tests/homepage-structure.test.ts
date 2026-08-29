@@ -7,17 +7,19 @@ const read = (path: string) => readFile(path, 'utf8');
 describe('homepage structure', () => {
   test('hero exposes clear language and approved conversion paths', async () => {
     const hero = await read('src/components/sections/Hero.astro');
-    const profilePanel = await read('src/components/sections/HeroProfile.astro');
     const profile = await read('src/data/profile.ts');
     expect(profile).toContain('Convierto problemas y procesos manuales en software útil.');
+    expect(profile).toContain('Software a medida · Automatización · Datos e integraciones');
     expect(hero).toContain('Cuéntame qué necesitas');
     expect(hero).toContain('href="/contacto"');
     expect(hero).toContain('Ver proyectos');
     expect(hero).toContain('href="/proyectos"');
     expect(hero).toContain('Ver CV');
-    expect(hero).not.toContain('Ver experiencia');
-    expect(profilePanel).toContain('Puedo ayudarte con');
-    expect(profilePanel).toContain('Automatización de tareas repetitivas');
+    expect(hero).toContain('href="/cv"');
+    expect(hero).toContain('/images/portrait-hero.webp');
+    expect(hero).toContain('Retrato de Andrés Gaibor en su espacio de trabajo');
+    expect(hero).not.toContain('HeroProfile');
+    expect(hero).not.toContain('Puedo ayudarte con');
   });
 
   test('services, contact navigation and blog remain discoverable', async () => {
@@ -25,6 +27,7 @@ describe('homepage structure', () => {
     const header = await read('src/components/layout/Header.astro');
     const footer = await read('src/components/layout/Footer.astro');
     expect(capabilities).toContain('id="servicios"');
+    expect(capabilities).toContain('border-t');
     expect(header).toContain("label: 'Servicios'");
     expect(header).toContain('Hablemos');
     expect(header).toContain('href="/contacto"');
@@ -34,8 +37,7 @@ describe('homepage structure', () => {
 
   test('homepage sections remain Astro-first', async () => {
     const hero = await read('src/components/sections/Hero.astro');
-    const profilePanel = await read('src/components/sections/HeroProfile.astro').catch(() => '');
-    expect(`${hero}\n${profilePanel}`).not.toMatch(/client:(load|idle|visible|only)/);
+    expect(hero).not.toMatch(/client:(load|idle|visible|only)/);
   });
 
   test('featured work has one primary and two secondary projects', async () => {
@@ -54,15 +56,22 @@ describe('homepage structure', () => {
     const process = page.indexOf('<WorkProcess />');
     const experience = page.indexOf('<ExperienceOverview />');
     const blog = page.indexOf('<LatestPosts />');
-    expect(process).toBeGreaterThan(projects);
-    expect(experience).toBeGreaterThan(process);
-    expect(blog).toBeGreaterThan(experience);
+    const contact = page.indexOf('<ContactCTA />');
+    const sections = [
+      page.indexOf('<Hero />'),
+      page.indexOf('<Capabilities />'),
+      projects,
+      process,
+      experience,
+      blog,
+      contact,
+    ];
+    expect(sections.every((position, index) => index === 0 || position > sections[index - 1])).toBe(true);
   });
 
   test('final CTA is problem-first and keeps contact and CV paths', async () => {
     const cta = await read('src/components/sections/ContactCTA.astro');
     expect(cta).toContain('¿Tienes algo que quieres mejorar?');
-    expect(cta).toContain('href="/cv"');
     expect(cta).toContain('Contarme mi idea');
     expect(cta).toContain('href="/contacto"');
   });

@@ -2,11 +2,10 @@
 import { getCollection } from 'astro:content';
 import Container from '../ui/Container.astro';
 import SectionHeading from '../ui/SectionHeading.astro';
-import PostCard from '../blog/PostCard.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3);
+  .slice(0, 1);
 ---
 
 <section class="border-y border-[var(--line)] py-16 sm:py-20">
@@ -19,8 +18,19 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       />
       <a href="/blog" class="text-sm font-semibold text-[var(--accent)]">Ver blog →</a>
     </div>
-    <div class="mt-10 grid gap-5">
-      {posts.map((post) => <PostCard post={post} />)}
+    <div class="mt-10 border-t border-[var(--line)]">
+      {posts.map((post) => (
+        <a href={`/blog/${post.id}`} class="group grid gap-3 py-7 no-underline sm:grid-cols-[10rem_minmax(0,1fr)_auto] sm:items-start sm:gap-8">
+          <time class="text-xs font-medium text-[var(--muted)]" datetime={post.data.publishedAt.toISOString()}>
+            {new Intl.DateTimeFormat('es-EC', { dateStyle: 'medium', timeZone: 'UTC' }).format(post.data.publishedAt)}
+          </time>
+          <div>
+            <h2 class="text-2xl font-semibold tracking-[-0.03em] group-hover:text-[var(--accent)]">{post.data.title}</h2>
+            <p class="mt-2 leading-7 text-[var(--muted)]">{post.data.description}</p>
+          </div>
+          <span class="text-sm font-semibold text-[var(--accent)]">Leer →</span>
+        </a>
+      ))}
     </div>
   </Container>
 </section>

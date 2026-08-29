@@ -16,11 +16,18 @@ async function sourceFiles(directory: string): Promise<string[]> {
   return files;
 }
 
-test('hero has no legacy profile card', async () => {
+test('hero exposes the editorial portrait contract', async () => {
   const hero = await read('src/components/sections/Hero.astro');
 
   expect(hero).not.toContain('HeroProfile');
   expect(hero).not.toContain('Puedo ayudarte con');
+  const profile = await read('src/data/profile.ts');
+  expect(profile).toContain('Software a medida · Automatización · Datos e integraciones');
+  expect(hero).toContain('/images/portrait-hero.webp');
+  expect(hero).toContain('width="1122"');
+  expect(hero).toContain('height="1402"');
+  expect(hero).toContain('loading="eager"');
+  expect(hero).toContain('decoding="async"');
 });
 
 test('home keeps approved section order', async () => {
@@ -35,7 +42,8 @@ test('home keeps approved section order', async () => {
     '<ContactCTA />',
   ];
 
-  expect(names.every((name, index) => page.indexOf(name) < page.indexOf(names[index + 1] ?? '\u0000'))).toBe(true);
+  const positions = names.map((name) => page.indexOf(name));
+  expect(positions.every((position, index) => index === 0 || position > positions[index - 1])).toBe(true);
 });
 
 test('public assets use semantic paths', async () => {
@@ -50,12 +58,21 @@ test('public assets use semantic paths', async () => {
   expect(productSource).not.toMatch(/Downloads[^\n]*\.png/);
 });
 
-test('work process exposes the four approved labels', async () => {
+test('work process exposes four titles and descriptions', async () => {
   const process = await read('src/data/work-process.ts');
+  const workProcess = await read('src/components/sections/WorkProcess.astro');
 
-  for (const label of ['01 Entiendo', '02 Propongo', '03 Construyo', '04 Lo dejo funcionando']) {
-    expect(process).toContain(label);
+  for (const title of ['Entiendo', 'Propongo', 'Construyo', 'Lo dejo funcionando']) {
+    expect(process).toContain(`title: '${title}'`);
   }
+  expect(process).toContain('Reviso cómo trabajas hoy, qué te está quitando tiempo y qué resultado necesitas.');
+  expect(process).toContain('Defino qué conviene construir, qué no hace falta y cómo debería funcionar.');
+  expect(process).toContain('Desarrollo por etapas para revisar el resultado, detectar problemas y corregir antes de terminar.');
+  expect(process).toContain('Configuro la solución, documento lo necesario y dejo claro cómo utilizarla y mantenerla.');
+  expect(workProcess).toContain('<ol');
+  expect(workProcess).toContain("String(index + 1).padStart(2, '0')");
+  expect(workProcess).toContain('workProcess.map');
+  expect((process.match(/title:/g) ?? []).length).toBe(4);
 });
 
 test('project cases expose required narrative labels', async () => {
