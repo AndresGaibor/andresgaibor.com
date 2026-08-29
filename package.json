@@ -13,7 +13,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "bun test",
-    "verify": "bun run test && bun run check && bun run build",
+    "verify": "bun run build && bun run test && bun run check",
     "astro": "astro",
     "cf:dev": "bun run build && wrangler dev",
     "deploy": "bun run build && wrangler deploy"

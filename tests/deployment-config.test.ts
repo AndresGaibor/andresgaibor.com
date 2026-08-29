@@ -10,3 +10,9 @@ test('Cloudflare keeps production domains while enabling version preview URLs', 
   expect(config).toContain('"pattern": "andresgaibor.com"');
   expect(config).toContain('"pattern": "www.andresgaibor.com"');
 });
+
+test('verify builds before tests and preserves the check step', async () => {
+  const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
+
+  expect(packageJson.scripts.verify).toBe('bun run build && bun run test && bun run check');
+});
