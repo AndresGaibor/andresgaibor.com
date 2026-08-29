@@ -73,6 +73,53 @@ const structuredData = {
     <meta name="twitter:image" content={socialImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
 
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+        document.documentElement.dataset.theme = theme;
+
+        if (savedTheme !== 'light' && savedTheme !== 'dark') {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+            document.documentElement.dataset.theme = event.matches ? 'dark' : 'light';
+          });
+        }
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+    <script is:inline>
+      const setupThemeToggle = () => {
+        const toggle = document.querySelector('#theme-toggle');
+        if (!toggle) return;
+
+        const syncThemeToggle = () => {
+          const isDark = document.documentElement.dataset.theme === 'dark';
+          toggle.setAttribute('aria-pressed', String(isDark));
+          toggle.setAttribute('aria-label', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+        };
+
+        toggle.addEventListener('click', () => {
+          const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = theme;
+          try {
+            localStorage.setItem('theme', theme);
+          } catch {
+            // Storage can be unavailable in private or restricted contexts.
+          }
+          syncThemeToggle();
+        });
+
+        syncThemeToggle();
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupThemeToggle, { once: true });
+      } else {
+        setupThemeToggle();
+      }
+    </script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <title>{fullTitle}</title>
   </head>
